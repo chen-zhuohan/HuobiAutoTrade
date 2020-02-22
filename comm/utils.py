@@ -6,7 +6,6 @@ from comm.email_helper import send_error
 
 
 def one_more_try(message, max=3, important=False):
-
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):

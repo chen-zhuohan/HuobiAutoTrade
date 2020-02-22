@@ -1,4 +1,5 @@
 from huobi_Python.huobi.model.order import Order
+from huobi_Python.huobi.model.constant import OrderType
 
 from comm.instance import db
 from models.base import UpdateBase
@@ -16,10 +17,17 @@ class Trade(UpdateBase, db.Model):
 
     @classmethod
     def create_by_order(cls, order: Order, mission_name):
-        if order.price < 0.0001:            # 卖出
-            price = order.filled_cash_amount / order.filled_amount
-        else:                               # 买入
+        if order.order_type == OrderType.SELL_MARKET:            # 卖出
+            try:
+                price = order.filled_cash_amount / order.filled_amount
+            except Exception:
+                for key, value in order.__dict__.items():
+                    print(key, value)
+                price = 0
+        elif order.order_type == OrderType.BUY_MARKET:           # 买入
             price = order.price
+        else:
+            raise Exception('unexpect order type')
 
         return cls.create(amount=order.amount, mission=mission_name, tradematch=order.symbol,
                           price=price, type=order.order_type)

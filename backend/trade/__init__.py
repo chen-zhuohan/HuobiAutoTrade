@@ -46,5 +46,5 @@ class THETAtoUSDTTrade(Trade):
 
 
 class IOSTtoUSDTTrade(Trade):
-    BUYCURRENCY = 'IOST'
+    BUYCURRENCY = 'iost'
     MIDDLECURRENCY = 'usdt'

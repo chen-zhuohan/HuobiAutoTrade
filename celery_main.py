@@ -1,9 +1,10 @@
 from apscheduler.events import SchedulerEvent
+from redbeat import RedBeatSchedulerEntry
 
 from backend.mission import LongTermBuy, ShortTermBuy, ShortTermSell, ShortTermStopLoss
 from comm.instance import celery
 from comm.utils import Logger
-
+RedBeatSchedulerEntry
 
 log = Logger('MY APS')
 

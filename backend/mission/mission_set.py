@@ -1,6 +1,6 @@
 from backend.mission.base import MissionBase, MissionForBuy, MissionForSell
 from backend.task import DodayOpenLEMa20, VolGTVol3, WeekOpenGTNow, NowLTWeekDN, VolLTVol3Week, \
-    NowLTDayMa20, NowLTHourDN, VolFTVol3Hour, NowGTUNHour, StopLose
+    NowLTDayMa20, NowLTHourDN, VolGTVol3Hour, NowGTUNHour, StopLose
 from backend.trade import THETAtoUSDTTrade, IOSTtoUSDTTrade
 from models.trade import Trade
 from models.conditions import Conditions, CONDITION_TYPE
@@ -17,7 +17,7 @@ class LongTermBuy(MissionForBuy):
 class ShortTermBuy(MissionForBuy):
     Trade = THETAtoUSDTTrade
     NAME = 'feb short term'
-    TASKLINE = (NowLTHourDN, VolFTVol3Hour)
+    TASKLINE = (NowLTHourDN, VolGTVol3Hour)
 
 
 class ShortTermSell(MissionForSell):

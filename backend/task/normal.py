@@ -124,7 +124,7 @@ class NowLTHourDN(TaskBase):
         return False
 
 
-class VolFTVol3Hour(TaskBase):
+class VolGTVol3Hour(TaskBase):
     RULE = '短期第0阶段第2次判断：上一小时交易总量应该大于前三小时交易总量的均值。（每小时00：01执行）'
     MSG = '上一小时的交易总量是 {}， 上三小时的交易均值是 {}'
 

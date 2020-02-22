@@ -6,7 +6,7 @@ class ResultType:
 
 class Result:
     def __init__(self, msg: str, pass_: bool, rule: str, task_name: str):
-        self.type_ = ResultType.NORMAL
+        self.type = ResultType.NORMAL
         self.task_name = task_name
         self.msg = msg
         self.pass_ = pass_
@@ -25,7 +25,6 @@ class Result:
             msg = 'PASS ' + task.MSG.format(*task.msg_arg)
         else:
             msg = 'FAIL ' + task.MSG.format(*task.msg_arg)
-
         return cls(msg, pass_, task.RULE, task.__class__.__name__)
 
     @property
@@ -35,7 +34,7 @@ class Result:
 
 class DefaultResult(Result):
     def __init__(self, task_name=''):
-        self.type_ = ResultType.DEFAULT
+        self.type = ResultType.DEFAULT
         self.task_name = str(task_name)
         self.msg = '嘤嘤嘤'
         self.pass_ = False
@@ -44,7 +43,7 @@ class DefaultResult(Result):
 
 class UnvalidResult(Result):
     def __init__(self, task_name=''):
-        self.type_ = ResultType.UNVALID
+        self.type = ResultType.UNVALID
         self.task_name = str(task_name)
         self.msg = '嘤嘤嘤'
         self.pass_ = False
