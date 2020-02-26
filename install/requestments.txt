@@ -1,0 +1,15 @@
+Flask==1.1.1
+Flask-APScheduler==1.11.0
+Flask-SQLAlchemy==2.4.1
+Flask-Admin==1.5.5
+Flask-Login==0.5.0
+Flask-HTTPAuth==3.3.0
+celery==4.3.0
+celery-redbeat==0.13.0
+psycopg2==2.8.4
+numpy==1.17.4
+redis==3.4.1
+requests==2.22.0
+apscheduler
+websocket-client
+urllib3
