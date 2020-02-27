@@ -8,30 +8,30 @@ SELECT * FROM `user`  ORDER BY id DESC  LIMIT  1
 # from auto_trade.backend import Result, UnvalidResult
 #
 #
-# class TaskBase:
-#     RULE = None
-#     MSG = None
-#
-#     def __init__(self):
-#         self.msg_arg = tuple()
-#
-#     def pass_(self, force=False):
-#         if self.is_valid or force:
-#             if self.pass_condition():
-#                 return Result.create_by_task(self, True)
-#             else:
-#                 return Result.create_by_task(self, False)
-#         return UnvalidResult()
-#
-#     @property
-#     def is_valid(self):
-#         return self.run_condition()
-#
-#     def run_condition(self):
-#         raise Exception('must be covered')
-#
-#     def pass_condition(self):
-#         raise Exception('must be covered')
+class TaskBase:
+    RULE = None
+    MSG = None
+
+    def __init__(self):
+        self.msg_arg = tuple()
+
+    def pass_(self, force=False):
+        if self.is_valid or force:
+            if self.pass_condition():
+                return Result.create_by_task(self, True)
+            else:
+                return Result.create_by_task(self, False)
+        return UnvalidResult()
+
+    @property
+    def is_valid(self):
+        return self.run_condition()
+
+    def run_condition(self):
+        raise Exception('must be covered')
+
+    def pass_condition(self):
+        raise Exception('must be covered')
 
 
 class TaskEngine:

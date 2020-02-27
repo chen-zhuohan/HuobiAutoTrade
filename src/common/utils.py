@@ -2,7 +2,7 @@ import functools
 import time
 
 from common.instance import log
-from auto_trade.common.email_helper import send_error
+from src.common.email_helper import send_error
 
 
 def one_more_try(message, max=3, important=False):

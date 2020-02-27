@@ -2,11 +2,11 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-from configs import USERS, MAIL_HOST, MAIL_PASSWORD, MAIL_PORT, MAIL_USER
+from configs import USERS, MAIL_HOST, MAIL_PASSWORD, MAIL_PORT, MAIL_USER, TESTING
 import logging
 
-DEFAULT = USERS.values()    # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-MANAGERS = (USERS['czh'], )
+DEFAULT = list(USERS.values())    # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+MANAGERS = USERS['czh']
 log = logging.getLogger(__name__)
 
 
@@ -25,8 +25,9 @@ def _send_all(smtpObj, msg, receivers):
     if isinstance(receivers, (list, tuple)):
         for receiver in receivers:
             msg['To'] = receiver
-            smtpObj.sendmail(MAIL_USER, receiver, msg.as_string())
-            log.info('send email to {} successfully'.format(receiver))
+            if not TESTING:
+                smtpObj.sendmail(MAIL_USER, receiver, msg.as_string())
+                log.info('send email to {} successfully'.format(receiver))
     else:
         msg = 'Receivers must be str, list or tuple, but receive {}'.format(type(receivers))
         log.error(msg)

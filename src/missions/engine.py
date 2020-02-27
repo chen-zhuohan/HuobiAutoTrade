@@ -1,4 +1,5 @@
 from common.email_helper import send_missionary_pass
+from common.instance import redis
 from common.utils import Logger
 from conditions.interface import get_condition_by_name
 from missions.model import Mission, Missionary
@@ -7,6 +8,7 @@ from tasks.interface import get_task_by_id
 
 class MissionaryEngine:
     log = Logger('Missionary Engine')
+
 
     def __init__(self, mission: Mission, missionary: Missionary):
         self.name = mission.name
@@ -26,14 +28,18 @@ class MissionaryEngine:
 
     def try_pass(self):
         self.log.info('try to pass')
-        if not self.can_run_before_each_task():
-            self.log.info('cant run due to can_run_before_each_task')
+        if self.can_run_before_each_task():
+            if not self.try_pass_each_task():
+                return
+        else:
+            self.log.info('cant run any task due to can_run_before_each_task')
             return
 
-        if not self.try_pass_each_task():
-            return
-
-        self.try_pass_target()
+        if self.can_run_before_target():
+            if self.try_pass_target():
+                return True
+        else:
+            self.log.info('cant run target due to can_run_before_target')
 
     def try_pass_each_task(self):
         for index, task_id in enumerate(self.task_id_line):
@@ -54,13 +60,18 @@ class MissionaryEngine:
         return True
 
     def try_pass_target(self):
-        if self.can_run_before_target() and self.target.can_run() and self.target.passed(self):
+        if self.target.can_run() and self.target.passed(self):
             self.log.info('pass target successfully')
             self.missionary.finish()
             self.missionary.create_new_after_finish()
             self.log.info('update missionary model successfully')
             send_missionary_pass(self.name)
+            return True
+        return False
 
+    @property
+    def next_task_index(self):
+        redis.set()
     # def show_info(self):
     #     result = []
     #     for task_id in self.task_id_line:

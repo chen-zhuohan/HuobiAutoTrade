@@ -2,12 +2,10 @@ import logging
 import pytz
 import os
 
-
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s][%(levelname)s] - %(message)s')
 
-
 # common:
-TEST = True
+TESTING = os.getenv('ENV', True)
 timezone = 'Asia/Shanghai'
 TIMEZONE = pytz.timezone(timezone)
 
@@ -16,7 +14,7 @@ SECRET_KEY = 'os.urandom(24)SQLALCHEMY_POOL_TIMEOUT'
 
 # db:
 BASE_DATABASE_URI = 'postgresql://czh:17081210@118.25.56.109:5432'
-SQLALCHEMY_DATABASE_URI = '{}/{}'.format(BASE_DATABASE_URI, 'test-huobi' if TEST else 'huobi')
+SQLALCHEMY_DATABASE_URI = '{}/{}'.format(BASE_DATABASE_URI, 'test-huobi' if TESTING else 'huobi')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_POOL_RECYCLE = 7200
 SQLALCHEMY_POOL_SIZE = 100
@@ -24,10 +22,10 @@ SQLALCHEMY_POOL_TIMEOUT = 28800
 SQLALCHEMY_MAX_OVERFLOW = 10
 
 # celery:
-REDIS_URL = 'redis://huobi-redis:6379/0' if not TEST else 'redis://127.0.0.1:6379/0'
+REDIS_URL = 'redis://huobi-redis:6379/0' if not TESTING else 'redis://127.0.0.1:6379/0'
 broker_url = REDIS_URL
 redbeat_redis_url = REDIS_URL
-result_backend = 'db+{}/{}'.format(BASE_DATABASE_URI, 'test-celery' if TEST else 'celery')
+result_backend = 'db+{}/{}'.format(BASE_DATABASE_URI, 'test-celery' if TESTING else 'celery')
 task_ignore_result = True
 task_store_errors_even_if_ignored = True
 enable_utc = False
@@ -47,6 +45,8 @@ TRADE_MATCH = BUY_CURRENCY + MIDDLE_CURRENCY
 
 # login & email:
 USERS = {
+    'czh': '1185671574@qq.com'
+} if TESTING else {
     'czh': '1185671574@qq.com',
     'hjr': '1582544942@qq.com'
 }

@@ -76,7 +76,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_demo (1)">
+  <component name="RunManager" selected="Python.trade">
     <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Watch-and-Auto-Trade-virtual-currency" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,7 +99,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Watch-and-Auto-Trade-virtual-currency" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -107,12 +107,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/missions" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\demo\test_demo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/missions/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -143,28 +143,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Watch-and-Auto-Trade-virtual-currency" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\demo\test_demo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test_helper" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Watch-and-Auto-Trade-virtual-currency" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -187,13 +165,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="trade" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Watch-and-Auto-Trade-virtual-currency" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/tasks/collection" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/tasks/collection/trade.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_demo (1)" />
-        <item itemvalue="Python.test (2)" />
+        <item itemvalue="Python.trade" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.test_demo" />
         <item itemvalue="Python.test_helper" />
+        <item itemvalue="Python.test_demo (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -224,6 +224,7 @@
       <workItem from="1582505737877" duration="4000" />
       <workItem from="1582622270612" duration="7596000" />
       <workItem from="1582639022424" duration="689000" />
+      <workItem from="1582767602260" duration="14154000" />
     </task>
     <servers />
   </component>
@@ -246,12 +247,13 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test_demo.coverage" NAME="test_demo Coverage Results" MODIFIED="1582626127850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$celery_redbeat_demo.coverage" NAME="celery_redbeat_demo Coverage Results" MODIFIED="1582432688402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
-    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test.coverage" NAME="test Coverage Results" MODIFIED="1582622298980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade" />
-    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test_helper.coverage" NAME="test_helper Coverage Results" MODIFIED="1582624611848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade/common" />
+    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test_helper.coverage" NAME="test_helper Coverage Results" MODIFIED="1582769834376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade/common" />
+    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test.coverage" NAME="test Coverage Results" MODIFIED="1582778501851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/missions" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$main.coverage" NAME="main Coverage Results" MODIFIED="1582432412381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test_demo__1_.coverage" NAME="test_demo (1) Coverage Results" MODIFIED="1582639111543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test__2_.coverage" NAME="test (2) Coverage Results" MODIFIED="1582629486602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$flask_admin_demo.coverage" NAME="flask_admin_demo Coverage Results" MODIFIED="1582446228006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
-    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1582629367062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade/missions" />
+    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$trade.coverage" NAME="trade Coverage Results" MODIFIED="1582782718197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/tasks/collection" />
+    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1582773231917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade/missions" />
   </component>
 </project>
