@@ -5,6 +5,8 @@ class Task(db.Model):
     id = db.Column(db.INTEGER, primary_key=True)
     name = db.Column(db.VARCHAR(64), unique=True)
 
-    template_name = db.Column(db.VARCHAR(64))      # show for admin
-    kwargs = db.Column(db.JSON)                # show for admin
-    can_run = db.Column(db.VARCHAR(64))        # show for admin
+    template_name = db.Column(db.VARCHAR(64))       # show for admin
+    kwargs = db.Column(db.JSON)                     # show for admin
+    can_run = db.Column(db.VARCHAR(64))             # show for admin
+
+    run_time = db.Column(db.JSON, server_default='{"minute": 0, "hour": "*"}')

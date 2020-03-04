@@ -1,14 +1,15 @@
 from common.email_helper import send_missionary_pass
 from common.instance import redis
+from common.time_helper import can_run_at_now
 from common.utils import Logger
 from conditions.interface import get_condition_by_name
 from missions.model import Mission, Missionary
+from schedule.interface import update_missionary
 from tasks.interface import get_task_by_id
 
 
 class MissionaryEngine:
     log = Logger('Missionary Engine')
-
 
     def __init__(self, mission: Mission, missionary: Missionary):
         self.name = mission.name
@@ -30,37 +31,62 @@ class MissionaryEngine:
         self.log.info('try to pass')
         if self.can_run_before_each_task():
             if not self.try_pass_each_task():
-                return
+                return False
         else:
             self.log.info('cant run any task due to can_run_before_each_task')
-            return
+            return False
 
         if self.can_run_before_target():
             if self.try_pass_target():
                 return True
         else:
             self.log.info('cant run target due to can_run_before_target')
+            return False
 
     def try_pass_each_task(self):
         for index, task_id in enumerate(self.task_id_line):
             if index < self.missionary.next_task_index:
                 continue
 
-            self.log.info('run from index: {}, task_id {}'.format(index, task_id))
             task = get_task_by_id(task_id)
-            self.log.info('get task: {} '.format(task))
-            if task.can_run() and task.passed(self, index):
-                self.log.info('pass one task successfully')
-                self.missionary.add_next_task_index()
-            else:
-                self.log.info('task fail at index: {}'.format(index))
+            self.log.info('run from index: {}, task_id {}, get task: {} '.format(index, task_id, task))
+            if not self.pass_task(index, task):
                 return False
 
         self.log.info('pass all task successfully')
         return True
 
+    def pass_task(self, index, task) -> bool:
+        def _do_run():
+            task.get_info_from_mission(index, self)
+            can_run_result = task.can_run()
+            if can_run_result and task.try_pass():
+                self.log.info('pass one task successfully')
+                self.missionary.add_task_index(save=False)
+                return True
+            else:
+                self.log.info('task fail at index: {}, can_run: {}'.format(index, can_run_result))
+                return False
+
+        if self.missionary.run_time == task.run_time:
+            self.log.info('missionary run time is same as task run time')
+            return _do_run()
+
+        now_missionary_run_time = self.missionary.run_time
+        self.missionary.run_time = task.run_time        # if not same，follow to task
+        self.missionary.save()
+        self.log.info('missionary run time update to {}'.format(self.missionary.run_time))
+        update_missionary(self.missionary)
+
+        if can_run_at_now(task.run_time, now=now_missionary_run_time):
+            return _do_run()
+        else:
+            self.log.info('task({}) cant run at {}'.format(task.run_time, now_missionary_run_time))
+            return False
+
     def try_pass_target(self):
-        if self.target.can_run() and self.target.passed(self):
+        self.target.get_info_from_mission(mission_engine=self)
+        if self.target.can_run() and self.target.try_pass():
             self.log.info('pass target successfully')
             self.missionary.finish()
             self.missionary.create_new_after_finish()

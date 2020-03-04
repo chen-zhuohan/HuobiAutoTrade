@@ -35,10 +35,19 @@ class TaskBase:
 
 
 class TaskEngine:
+    run_time: str
+
+    def _str__(self):
+        return '{[{name}, run_time: {run_time}]}'.format(name=self.__name__, run_time=self.run_time)
+
     def can_run(self) -> bool:
         pass
 
-    def passed(self, mission_engine, index=-1) -> bool:
+    def try_pass(self) -> bool:
+        pass
+
+    def get_info_from_mission(self, index: int = 0, mission_engine=None):
+        # 0 is target
         pass
 
     # @property

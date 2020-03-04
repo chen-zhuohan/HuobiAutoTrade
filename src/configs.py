@@ -35,9 +35,10 @@ task_time_limit = 30
 # huobi:
 AccessKey = 'mn8ikls4qg-f444bdb9-825a1319-69dc6'
 SecretKey = '54c7975a-453c4611-15711bf9-ba479'
-HUOBI_URL = 'api.huobi.de.com'    # 不用翻墙
-# url = 'api.huobi.pro'
-# url = 'api-aws.huobi.pro'
+HUOBI_URL = 'https://api.huobi.de.com'    # 不用翻墙
+# HUOBI_URL = 'https://api.huobi.pro'
+# HUOBI_URL = 'https://api-aws.huobi.pro'
+MARKET_KLINE_URL = HUOBI_URL + '/market/history/kline'
 # theta是你要买的，usdt是中间火币
 BUY_CURRENCY = 'theta'
 MIDDLE_CURRENCY = 'usdt'

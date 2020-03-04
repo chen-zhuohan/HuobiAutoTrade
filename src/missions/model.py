@@ -1,6 +1,7 @@
 from common.model_help import UpdateModelBase
 from common.time_helper import now_int_timestamp
 from common.instance import db
+from tasks.interface import get_task_run_time_by_id
 
 
 class Mission(UpdateModelBase):
@@ -14,7 +15,6 @@ class Mission(UpdateModelBase):
     can_run_before_target = db.Column(db.VARCHAR(64), server_default='')
 
     # for celery
-    run_time = db.Column(db.JSON, server_default='{"minute": 0, "hour": "*"}')
     is_valid = db.Column(db.Boolean, server_default='t')
 
     def __str__(self):
@@ -36,13 +36,15 @@ class Missionary(UpdateModelBase):
     mission_id = db.Column(db.Integer)
     next_task_index = db.Column(db.Integer, server_default='0')
 
+    run_time = db.Column(db.VARCHAR(64), server_default='', nullable=False)
     is_end = db.Column(db.BOOLEAN, server_default='f')
     end_time = db.Column(db.Integer, server_default='0')
     result_log_id = db.Column(db.Integer, server_default='0')
 
-    def add_next_task_index(self):
+    def add_task_index(self, save=True):
         self.next_task_index += 1
-        self.save()
+        if save:
+            self.save()
 
     def finish(self):
         self.is_end = True
@@ -57,12 +59,13 @@ class Missionary(UpdateModelBase):
         self.create(self.mission_id)
 
     @classmethod
-    def create_by_mission(cls, mission):
-        return cls(mission_id=mission.id).save()
+    def create_by_mission(cls, mission: Mission):
+        first_task_id = mission.task_line[0]
+        return cls(mission_id=mission.id, run_time=get_task_run_time_by_id(first_task_id)).save()
 
     @classmethod
     def get_or_create_by_mission(cls, mission):
-        None_able = cls.query.filter_by(mission_id=mission.id).first()
+        None_able = cls.query.filter_by(mission_id=mission.id, is_end=False).first()
         if None_able is None:
             return cls.create_by_mission(mission)
         return None_able

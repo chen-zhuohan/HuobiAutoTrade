@@ -5,7 +5,7 @@ from common.instance import log
 from src.common.email_helper import send_error
 
 
-def one_more_try(message, max=3, important=False):
+def one_more_try(message: str, max=3, important=False):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
