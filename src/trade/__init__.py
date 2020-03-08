@@ -1,4 +1,4 @@
-from src.common.huobi_client import market_buy, market_sell, get_all_spot_balance, get_order
+from trade.interface import market_buy, market_sell, get_all_spot_balance, get_order
 
 
 class Trade:

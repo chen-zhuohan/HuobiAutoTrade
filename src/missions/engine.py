@@ -12,6 +12,7 @@ class MissionaryEngine:
     log = Logger('Missionary Engine')
 
     def __init__(self, mission: Mission, missionary: Missionary):
+        self.mission_id = mission.id
         self.name = mission.name
         self.target_task_id = mission.target
         self.task_id_line = mission.task_line

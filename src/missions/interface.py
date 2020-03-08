@@ -11,6 +11,10 @@ def get_valid_mission_id_line():
     return Mission.get_valid_mission_id_line()
 
 
+def get_valid_missions():
+    return Mission.get_valid_missions()
+
+
 def get_valid_mission_missionary():
     result = []
     mission_id_to_missionary = Missionary.get_valid_mission_id_to_missionary()

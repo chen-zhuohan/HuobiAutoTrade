@@ -1,3 +1,4 @@
+from conditions.model import Conditions
 
 
 def always_true(*args, **kwargs):
@@ -15,9 +16,13 @@ def get_condition_by_name(name: str) -> callable:
     :param name:
     :return:
     """
-    if name == 'always_true':
+    if name == 'always_true' or name == '' or name is None:
         return always_true
     elif name == 'always_false':
         return always_false
-    elif name == '':
-        return always_true
+    else:
+        condition = Conditions.query.filter_by(name=name, valid=True).first()
+        if condition is None:
+            return always_true
+        else:
+            return condition.is_valid

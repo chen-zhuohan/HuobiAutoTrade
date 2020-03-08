@@ -1,3 +1,4 @@
+from celery.schedules import schedule, crontab
 from collections import OrderedDict
 from datetime import datetime
 import time
@@ -45,6 +46,15 @@ CAN_RUN_TIME_FUNC = {
     '60min': can_run_60min,
     '4hour': can_run_4h,
     '1day': can_run_1day
+}
+RUN_TIME_SCHEDULE = {
+    '1min': schedule(run_every=60),  # seconds,
+    '5min': crontab(minute='*/5'),
+    '15min': crontab(minute='*/15'),
+    '30min': crontab(minute='*/30'),
+    '60min': crontab(minute='0', hour='*'),
+    '4hour': crontab(minute='0', hour='*/4'),
+    '1day': crontab(minute='0', hour='0')
 }
 
 

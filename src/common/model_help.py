@@ -40,4 +40,8 @@ class UpdateModelBase(db.Model):
     def get_last(cls, **kwargs):
         return cls.query.filter_by(**kwargs).order_by(desc(cls.id)).limit(1).first()
 
-
+    @classmethod
+    def create(cls, **kwargs):
+        m = cls(**kwargs)
+        m.save()
+        return m
