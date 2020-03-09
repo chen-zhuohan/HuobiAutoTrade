@@ -2,7 +2,7 @@ from huobi.requstclient import RequestClient
 from huobi.model.constant import OrderType, AccountType
 
 from common.utils import one_more_try
-from configs import AccessKey, SecretKey, HUOBI_URL, TRADE_MATCH, TESTING
+from configs import AccessKey, SecretKey, HUOBI_URL, TRADE_MATCH, TESTING, NOTTRADE
 
 request_client = RequestClient(api_key=AccessKey, secret_key=SecretKey, url='https://' + HUOBI_URL)
 
@@ -24,7 +24,7 @@ def handel_precision(n):
 
 @one_more_try('买入', max=2, important=True)
 def market_buy(amount: int, symbol: str) -> int:
-    if TESTING:
+    if NOTTRADE:
         return 0
     amount = handel_precision(amount)
     order_id = request_client.create_order(symbol, AccountType.SPOT, OrderType.BUY_MARKET, amount=amount, price=None)
@@ -33,7 +33,7 @@ def market_buy(amount: int, symbol: str) -> int:
 
 @one_more_try('卖出', max=2, important=True)
 def market_sell(amount: int, symbol: str) -> int:
-    if TESTING:
+    if NOTTRADE:
         return 0
     amount = handel_precision(amount)
     order_id = request_client.create_order(symbol, AccountType.SPOT, OrderType.SELL_MARKET, amount=amount, price=None)

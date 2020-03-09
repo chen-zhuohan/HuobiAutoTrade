@@ -52,8 +52,8 @@ RUN_TIME_SCHEDULE = {
     '5min': crontab(minute='*/5'),
     '15min': crontab(minute='*/15'),
     '30min': crontab(minute='*/30'),
-    # '60min': crontab(minute='0', hour='*'),
-    '60min': schedule(run_every=60),
+    '60min': crontab(minute='0', hour='*'),
+    # '60min': schedule(run_every=60),
     '4hour': crontab(minute='0', hour='*/4'),
     '1day': crontab(minute='0', hour='0')
 }

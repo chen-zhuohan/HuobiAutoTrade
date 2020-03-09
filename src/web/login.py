@@ -45,8 +45,8 @@ def _before_request():
     auth = request.authorization
     log.info('auth: {}'.format(auth))
     if auth is None:                        # index
-        log.info('some one first login, detail: origin: {}, host url: {}'.
-                 format(request.origin, request.host_url))
+        # log.info('some one first login, detail: origin: {}, host url: {}'.
+        #          format(request.origin, request.host_url))
         pass
     elif auth.username == 'czh':
         return

@@ -5,7 +5,8 @@ import os
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s][%(levelname)s] - %(message)s')
 
 # common:
-TESTING = os.getenv('ENV', True)
+TESTING = False
+NOTTRADE = True
 timezone = 'Asia/Shanghai'
 TIMEZONE = pytz.timezone(timezone)
 
