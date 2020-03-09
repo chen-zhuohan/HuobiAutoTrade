@@ -1,6 +1,7 @@
 import importlib
 import inspect
 
+from common.utils import Logger
 from tasks.result import Result
 from tasks.template.base import TaskTemplateBase
 from tasks.template.trade import TradeTask
@@ -19,6 +20,7 @@ for name, obj in inspect.getmembers(task_template_set):
 
 
 class TaskEngine:
+    logger = Logger('Task engine')
     def __init__(self, task_id=None):
         if task_id is None:         # for test
             return
@@ -38,7 +40,7 @@ class TaskEngine:
         self.missionary_id = None
 
     def __str__(self):
-        return '{[{name}, run_time: {run_time}]}'.format(name=self.__name__, run_time=self.run_time)
+        return '[{}]'.format(self.task_name)
 
     def init_task(self, task):
         self.task_id = task.id
@@ -47,6 +49,7 @@ class TaskEngine:
         self.run_time = task.run_time
         self.can_run_str = task.can_run
         self.task = task_template_dict[task.template_name]()
+        self.logger.clue = self.task_name
 
     def get_info_from_mission(self, index: int = 0, mission_engine=None):
         # 0 is target
@@ -61,12 +64,18 @@ class TaskEngine:
         return self._can_run()
 
     def try_pass(self) -> bool:
+        self.logger.info('try to pass task')
         is_pass = self.task.try_pass(**self.kwargs)
-        result = Result.create_by_task_engine(self, is_pass)
-        ResultLog.save_from_task_engine(self)
+        self.logger.info('task pass completed, result: {}'.format(is_pass))
 
-        if is_pass and issubclass(self.task, TradeTask):        # 记录交易结果
+        result = Result.create_by_task_engine(self, is_pass)
+        self.logger.info('create result by task engine successfully, result: {}'.format(result))
+
+        result_log = ResultLog.save_from_task_engine(self)
+        self.logger.info('create result log by task engine successfully, result_log id: {}'.format(result_log.id))
+        self.logger.info('task type: {}'.format(type(self.task)))
+        if is_pass and issubclass(self.task.__class__, TradeTask):        # 记录交易结果
             order_id = self.task.order_id
             record_by_order_id.delay(order_id, self.mission_id, self.mission_name, self.missionary_id)
-        
+            self.logger.info('task is type of trade, save trade record has in async.order id: {}'.format(order_id))
         return result

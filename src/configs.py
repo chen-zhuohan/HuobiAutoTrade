@@ -23,14 +23,18 @@ SQLALCHEMY_MAX_OVERFLOW = 10
 
 # celery:
 REDIS_URL = 'redis://huobi-redis:6379/0' if not TESTING else 'redis://127.0.0.1:6379/0'
-broker_url = REDIS_URL
-redbeat_redis_url = REDIS_URL
-result_backend = 'db+{}/{}'.format(BASE_DATABASE_URI, 'test-celery' if TESTING else 'celery')
-task_ignore_result = True
-task_store_errors_even_if_ignored = True
-enable_utc = False
-result_expires = 60
-task_time_limit = 30
+
+
+class CeleryConfig:
+    redis_url = REDIS_URL
+    broker_url = REDIS_URL
+    redbeat_redis_url = REDIS_URL
+    result_backend = 'db+{}/{}'.format(BASE_DATABASE_URI, 'test-celery' if TESTING else 'celery')
+    task_ignore_result = True
+    task_store_errors_even_if_ignored = True
+    enable_utc = False
+    result_expires = 60
+    task_time_limit = 30
 
 # huobi:
 AccessKey = 'mn8ikls4qg-f444bdb9-825a1319-69dc6'

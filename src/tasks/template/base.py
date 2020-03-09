@@ -1,4 +1,8 @@
+import inspect
 from common.email_helper import send_error
+from common.utils import Logger
+
+logger = Logger('task template')
 
 
 class TaskTemplateBase:
@@ -16,7 +20,8 @@ class TaskTemplateBase:
 
     @classmethod
     def get_args(cls):
-        return cls.try_pass.__code__.co_varnames[1:]   # exclude self
+        return str(inspect.getfullargspec(cls.try_pass).args[1:])
+        # return str(cls.try_pass.__code__.co_varnames[1:])   # exclude self
 
     @property
     def msg(self):
@@ -24,11 +29,12 @@ class TaskTemplateBase:
             result = '[Task Temp未运行: {}]'.format(self.RULE)
         else:
             try:
-                msg = self.MSG_FORMAT.format(self.msg_args)
+                msg = self.MSG_FORMAT.format(*self.msg_args)
                 result = '[Task Temp运行结束: {}]'.format(msg)
             except Exception as e:
                 result = '[Task Temp赋值msg失败: {}, {}]'.format(self.msg_args, self.MSG_FORMAT)
                 send_error(e)
+        logger.info('get msg: {}'.format(result))
         return result
 
     @property

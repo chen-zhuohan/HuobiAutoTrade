@@ -16,6 +16,7 @@ class Mission(UpdateModelBase):
 
     # for celery
     is_valid = db.Column(db.Boolean, server_default='t')
+    next_run_mission = db.Column(db.INTEGER, nullable=True)
 
     def __str__(self):
         return '[{} is valid: {}]'.format(self.name, self.is_valid)

@@ -21,7 +21,7 @@ class MARKET_BUY(TradeTask):
             order_id = market_buy(amount=amount, symbol=symbol)
             self.order_id = order_id
             self.msg_args = (amount, symbol, order_id)
-            logger_buy.info('buy successfully, info: {}'.format(self.MSG_FORMAT.format(self.msg_args)))
+            logger_buy.info('buy successfully, info: {}'.format(self.MSG_FORMAT.format(*self.msg_args)))
             return True
         except Exception as e:
             logger_buy.error('somethings wrong, detail: {}'.format(e.args))
@@ -37,7 +37,7 @@ class MARKET_SELL(TradeTask):
             order_id = market_sell(amount=amount, symbol=symbol)
             self.order_id = order_id
             self.msg_args = (amount, symbol, order_id)
-            logger_buy.info('buy successfully, info: {}'.format(self.MSG_FORMAT.format(self.msg_args)))
+            logger_buy.info('buy successfully, info: {}'.format(self.MSG_FORMAT.format(*self.msg_args)))
             return True
         except Exception as e:
             logger_buy.error('somethings wrong, detail: {}'.format(e.args))

@@ -1,8 +1,8 @@
 from uuid import uuid4 as uuid
-from src.common.model_help import save_many_models
-from src.missions.engine import MissionaryEngine
-from src.missions.interface import get_valid_mission_missionary
-from src.missions.model import Missionary, Mission
+from common.model_help import save_many_models
+from missions.engine import MissionaryEngine
+from missions.interface import get_valid_mission_missionary
+from missions.model import Missionary, Mission
 
 
 def create_not_valid_mission():

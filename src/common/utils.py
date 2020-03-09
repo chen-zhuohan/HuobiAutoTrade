@@ -2,24 +2,7 @@ import functools
 import time
 
 from common.instance import log
-from src.common.email_helper import send_error
-
-
-def one_more_try(message: str, max=3, important=False):
-    def decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            for i in range(max):
-                try:
-                    return func(*args, **kwargs)
-                except Exception as e:
-                    time.sleep(0.1)
-                    if important:
-                        send_error(e, message)
-            send_error(e, message)
-            raise e
-        return wrapper
-    return decorator
+from common.email_helper import send_error
 
 
 class Logger:
@@ -69,3 +52,25 @@ class Logger:
 
     def error(self, msg):
         log.error(self._make_log(msg))
+
+
+logger = Logger('one more try')
+
+
+def one_more_try(message: str, max=3, important=False):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            logger.info('one more try has in work, the one more try function: {}'.format(func))
+            for i in range(max):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    logger.info('somethings wrong, detail: {}, retry time: {}'.format(e.args, i))
+                    time.sleep(0.1)
+                    if important:
+                        send_error(e, message)
+            send_error(e, message)
+            raise e
+        return wrapper
+    return decorator

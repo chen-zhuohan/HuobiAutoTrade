@@ -1,4 +1,5 @@
 from tasks.engine import TaskEngine
+from tasks.models.task import Task
 
 
 class AlwaysTrue(TaskEngine):
@@ -50,8 +51,14 @@ CONSTANT_ID_TASK_MAP = {
 
 
 def get_task_by_id(id_) -> TaskEngine:
-    return CONSTANT_ID_TASK_MAP.get(id_)
+    if id_ in CONSTANT_ID_TASK_MAP:
+        return CONSTANT_ID_TASK_MAP.get(id_)
+    else:
+        return TaskEngine(task_id=id_)
 
 
 def get_task_run_time_by_id(id_: int) -> str:
-    return CONSTANT_ID_TASK_MAP.get(id_).run_time
+    if id_ in CONSTANT_ID_TASK_MAP:
+        return CONSTANT_ID_TASK_MAP.get(id_).run_time
+    else:
+        return Task.query.filter_by(id=id_).with_entities('id', 'run_time').first()[1]

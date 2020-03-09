@@ -1,4 +1,4 @@
-from tasks.models.result_log import ResultLog
+from common.utils import Logger
 
 class ResultType:
     NORMAL = 1
@@ -7,6 +7,8 @@ class ResultType:
 
 
 class Result:
+    logger = Logger('result')
+
     def __init__(self, msg: str, pass_: bool, rule: str, index: int, task_id: int,
                  task_name: str, mission_name: str):
 
@@ -28,6 +30,7 @@ class Result:
 
     @classmethod
     def create_by_task_engine(cls, task_engine, pass_):
+        cls.logger.info('try to create by task engine')
         task = task_engine.task
         if pass_:
             msg = 'PASS ' + task.msg

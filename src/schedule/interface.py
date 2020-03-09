@@ -2,29 +2,37 @@ from redbeat import RedBeatSchedulerEntry
 
 from common.instance import celery, redis
 from common.time_helper import RUN_TIME_SCHEDULE
-from missions.interface import get_valid_mission_missionary
+from common.utils import Logger
 
 
-def add_missionary(name: str, task: str, run_time: str, args):
+RUNNING_TASK_NAME = 'mission-{}'
+logger = Logger('scheduler interface')
+
+
+def add_missionary(mission_id, run_time: str, task: str = 'mission.run_mission'):
+    name = RUNNING_TASK_NAME.format(mission_id)
+    args = (mission_id,)
     interval = RUN_TIME_SCHEDULE[run_time]
+    logger.info('add missionary: mission id: {}, run time: {}'.format(mission_id, interval))
     entry = RedBeatSchedulerEntry(name, task, interval, args=args, app=celery)
     entry.save()
 
 
-def del_missionary(task_name):
-    redis.delete('redbeat:{}'.format(task_name))
+def del_missionary(mission_id):
+    redis.delete('redbeat:{}'.format(RUNNING_TASK_NAME.format(mission_id)))
 
 
 def update_missionary(missionary):
-    name = 'mission-{}'.format(missionary.mission_id)
+    name = RUNNING_TASK_NAME.format(missionary.mission_id)
     interval = RUN_TIME_SCHEDULE[missionary.run_time]
     entry = RedBeatSchedulerEntry(name, 'mission.run_mission', interval, args=(missionary.mission_id, ), app=celery)
     entry.save()
 
 
 def add_all_missionary():
+    from missions.interface import get_valid_mission_missionary
     for mission_dict in get_valid_mission_missionary():
         mission = mission_dict['mission']
         missionary = mission_dict['missionary']
-        add_missionary('mission-{}'.format(mission.id), 'mission.run_mission', run_time=missionary.run_time,
-                       args=(mission.id,))
+        logger.info('add mission(id: {}) to redis, run_time: {}'.format(mission.id, missionary.run_time))
+        add_missionary(mission.id, run_time=missionary.run_time)

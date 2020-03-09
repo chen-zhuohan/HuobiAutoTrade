@@ -1,3 +1,5 @@
+from .admin import *
+
 # from missions.base import MissionBase, MissionForBuy, MissionForSell
 # from auto_trade.backend import DodayOpenLEMa20, VolGTVol3, WeekOpenGTNow, NowLTWeekDN, VolLTVol3Week, \
 #     NowLTDayMa20, NowLTHourDN, VolGTVol3Hour, NowGTUNHour, StopLose

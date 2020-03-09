@@ -37,7 +37,6 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-huobi/
 htmlcov/
 .tox/
 .nox/
@@ -114,3 +113,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# celery
+*.pid
+
+# huobi
+huobi/
