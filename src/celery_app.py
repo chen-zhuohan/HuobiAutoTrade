@@ -1,7 +1,6 @@
 from common.instance import celery
 from common.utils import Logger
-from missions.interface import run_mission, get_valid_mission_missionary
-from schedule.interface import add_missionary, add_all_missionary
+from missions.interface import add_all_missionary
 
 log = Logger('MY APS')
 
