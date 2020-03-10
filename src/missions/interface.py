@@ -19,13 +19,15 @@ def get_valid_mission_missionary():
     result = []
     mission_id_to_missionary = Missionary.get_valid_mission_id_to_missionary()
     mission_line = Mission.get_valid_missions()
+    log.info('all valid mission: {}'.format(tuple(mission_line)))
     for mission in mission_line:
         missionary = mission_id_to_missionary.get(mission.id, None)
         if missionary:
-            result.append({
-                'mission': mission,
-                'missionary': missionary
-            })
+            if mission.is_valid:
+                result.append({
+                    'mission': mission,
+                    'missionary': missionary
+                })
         else:
             log.info('mission({})\'s missionary not found, create new'.format(mission))
             missionary = Missionary.create_by_mission(mission)

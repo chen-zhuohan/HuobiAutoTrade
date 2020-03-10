@@ -1,7 +1,11 @@
+from flask_sqlalchemy import models_committed
+from sqlalchemy import event
+
 from common.model_help import UpdateModelBase
 from common.time_helper import now_int_timestamp
 from common.instance import db
 from tasks.interface import get_task_run_time_by_id
+from schedule.interface import update_missionary, del_missionary, add_missionary
 
 
 class Mission(UpdateModelBase):
@@ -61,8 +65,12 @@ class Missionary(UpdateModelBase):
 
     @classmethod
     def create_by_mission(cls, mission: Mission):
-        first_task_id = mission.task_line[0]
-        return cls(mission_id=mission.id, run_time=get_task_run_time_by_id(first_task_id)).save()
+        if len(mission.task_line) > 0:
+            first_task_id = mission.task_line[0]
+            run_time = get_task_run_time_by_id(first_task_id)
+        else:
+            run_time = '1min'
+        return cls(mission_id=mission.id, run_time=run_time).save()
 
     @classmethod
     def get_or_create_by_mission(cls, mission):
@@ -77,3 +85,24 @@ class Missionary(UpdateModelBase):
         for missionary in cls.query.filter_by(is_end=False).all():
             result[missionary.mission_id] = missionary
         return result
+
+
+@event.listens_for(Mission, 'after_update')
+def my_append_listener(mapper, connect, instance: Mission):
+    if instance.is_valid:
+        update_missionary(mission=instance)
+    else:
+        del_missionary(instance.id)
+
+
+# @models_committed.connect
+# def on_models_committed(*args, **kwargs):
+#     print(*args)
+#     print(**kwargs)
+    # for obj, change in changes:
+    #     if change == 'insert' and hasattr(obj, '__commit_insert__'):
+    #         obj.__commit_insert__()
+    #     elif change == 'update' and hasattr(obj, '__commit_update__'):
+    #         obj.__commit_update__()
+    #     elif change == 'delete' and hasattr(obj, '__commit_delete__'):
+    #         obj.__commit_delete__()

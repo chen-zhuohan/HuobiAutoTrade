@@ -6,7 +6,7 @@ logging.basicConfig(level=logging.INFO, format='[%(asctime)s][%(levelname)s] - %
 
 # common:
 TESTING = False
-NOTTRADE = True
+NOTTRADE = False
 timezone = 'Asia/Shanghai'
 TIMEZONE = pytz.timezone(timezone)
 
