@@ -9,7 +9,6 @@ class Conditions(UpdateModelBase, db.Model):
     expires = db.Column(db.INTEGER, nullable=True)
     valid = db.Column(db.BOOLEAN, default=True)
 
-    @property
     def is_valid(self):
         if self.expires is None:
             return self.valid

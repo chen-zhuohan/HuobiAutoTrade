@@ -2,7 +2,7 @@ from common.instance import celery
 from common.utils import Logger
 from missions.model import Missionary, Mission
 from missions.engine import MissionaryEngine
-from schedule.interface import drop_all, mission_id_to_entry, add_missionary
+# from schedule.interface import drop_all, mission_id_to_entry, add_missionary
 
 log = Logger('mission interface')
 
@@ -49,13 +49,13 @@ def do_run_mission(mission_id):
     return mission_engine.try_pass()
 
 
-def add_all_missionary(save=True):
-    drop_all()
-    for mission_dict in get_valid_mission_missionary():
-        mission = mission_dict['mission']
-        missionary = mission_dict['missionary']
-        add_missionary(mission.id, run_time=missionary.run_time, save=save)
-    log.info('after add all missionary, the mission id to entry: {}'.format(mission_id_to_entry))
+# def add_all_missionary(save=True):
+#     drop_all()
+#     for mission_dict in get_valid_mission_missionary():
+#         mission = mission_dict['mission']
+#         missionary = mission_dict['missionary']
+#         add_missionary(mission.id, run_time=missionary.run_time, save=save)
+#     log.info('after add all missionary, the mission id to entry: {}'.format(mission_id_to_entry))
 
 
 @celery.task(name='mission.run_mission')
@@ -63,4 +63,4 @@ def run_mission(mission_id):
     return do_run_mission(mission_id)
 
 
-add_all_missionary(save=False)
+# add_all_missionary(save=False)

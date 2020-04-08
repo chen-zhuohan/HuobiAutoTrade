@@ -43,7 +43,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ugc-jiuzhang" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -239,7 +239,22 @@
       <workItem from="1583677566090" duration="4288000" />
       <workItem from="1583682119213" duration="19288000" />
       <workItem from="1583738685249" duration="22000" />
-      <workItem from="1583755386210" duration="13167000" />
+      <workItem from="1583755386210" duration="17894000" />
+      <workItem from="1583889048779" duration="42000" />
+      <workItem from="1583978927473" duration="760000" />
+      <workItem from="1583999556809" duration="21000" />
+      <workItem from="1584416031560" duration="594000" />
+      <workItem from="1584433669131" duration="634000" />
+      <workItem from="1584533988925" duration="640000" />
+      <workItem from="1584580075602" duration="115000" />
+      <workItem from="1584890165733" duration="3415000" />
+      <workItem from="1584925150696" duration="5000" />
+      <workItem from="1585620729116" duration="3677000" />
+      <workItem from="1585791454247" duration="2311000" />
+      <workItem from="1586052174321" duration="10802000" />
+      <workItem from="1586221190630" duration="4416000" />
+      <workItem from="1586321503849" duration="360000" />
+      <workItem from="1586321940643" duration="551000" />
     </task>
     <servers />
   </component>
@@ -264,7 +279,7 @@
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$celery_redbeat_demo.coverage" NAME="celery_redbeat_demo Coverage Results" MODIFIED="1582432688402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$jwt_demo.coverage" NAME="jwt_demo Coverage Results" MODIFIED="1583458489794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test_helper.coverage" NAME="test_helper Coverage Results" MODIFIED="1582769834376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade/common" />
-    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test.coverage" NAME="test Coverage Results" MODIFIED="1583808345604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test.coverage" NAME="test Coverage Results" MODIFIED="1586226586370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$helper.coverage" NAME="helper Coverage Results" MODIFIED="1582816137951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/tasks" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$interface.coverage" NAME="interface Coverage Results" MODIFIED="1583655599791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/tasks" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$main.coverage" NAME="main Coverage Results" MODIFIED="1582432412381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade" />

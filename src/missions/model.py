@@ -5,7 +5,7 @@ from common.model_help import UpdateModelBase
 from common.time_helper import now_int_timestamp
 from common.instance import db
 from tasks.interface import get_task_run_time_by_id
-from schedule.interface import update_missionary, del_missionary, add_missionary
+# from schedule.interface import update_missionary, del_missionary, add_missionary
 
 
 class Mission(UpdateModelBase):
@@ -87,12 +87,12 @@ class Missionary(UpdateModelBase):
         return result
 
 
-@event.listens_for(Mission, 'after_update')
-def my_append_listener(mapper, connect, instance: Mission):
-    if instance.is_valid:
-        update_missionary(mission=instance)
-    else:
-        del_missionary(instance.id)
+# @event.listens_for(Mission, 'after_update')
+# def my_append_listener(mapper, connect, instance: Mission):
+#     if instance.is_valid:
+#         update_missionary(mission=instance)
+#     else:
+#         del_missionary(instance.id)
 
 
 # @models_committed.connect

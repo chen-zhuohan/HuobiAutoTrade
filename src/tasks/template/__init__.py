@@ -3,3 +3,4 @@ from tasks.template.data import (OpenBetweenMa20_10Percent, Now_LT_Ma20, Vol_GT_
                                  Now_LT_LB, Now_GT_UB, Now_LT_Open)
 
 from tasks.template.trade import (MARKET_BUY, MARKET_SELL)
+from tasks.template.mix import ShortFirstStep, ShortSecondStep

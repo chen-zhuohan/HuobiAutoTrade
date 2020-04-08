@@ -1,0 +1,22 @@
+version: '2' 			# 表示该 Docker-Compose 文件使用的是 Version 2 file
+services:
+  huobi-flask:  # 指定服务名称
+    image: czh/huobi-flask          		 # 指定镜像
+    container_name: alpine 				# 启动的容器的名字
+    command: sh 						   # 覆盖容器启动之后，自动执行的命令
+    privileged: true					   # 允许容器中运行特权指令
+    restart: always 					   # 容器退出后的重启策略为始终重启
+    tty: true							  # 模拟一个假的远程控制台
+    hostname: czh-demo
+    volumes:				# 设置卷挂载路径，前者是宿主机的，后者是容器内的，:ro表示只读权限
+		- /etc/localtime:/etc/localtime:ro
+  demo_set:/project/demo_set
+      ports:  			# 暴露对外的端口，前者是宿主机的，后者是容器的，建议采用字符串形式
+  - "12321:12321"
+    nds_on:	# 解决启动多个容器的时候，容器启动的前后关系
+    - db
+       redis
+        redis:	# 另一个服务
+          image: redis
+        db:
+          image: postgres

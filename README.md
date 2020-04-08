@@ -92,6 +92,8 @@ result记录着一次task运行完的结果。字段包括missionary_id，task_n
 1. Task和Missionary的时间变动还不能热更新到定时任务上
 2. schedule和missionary还是要拆开来，两个模块的interface耦合有点深，schedule应该作为一个工具模块来使用
 3. mission和missionary的概念的梳理，优化命名
-3. mission和missionary的概念的梳理，减少查表次数
-4. 定制化管理界面，增加提示信息，修改CSS样式
-5. 优化数据表，减少时间相关字段，考虑分表。
+4. 一键化部署
+5. 增加测试用例
+6. mission和missionary的概念的梳理，减少查表次数
+7. 定制化管理界面，增加提示信息，修改CSS样式
+8. 优化数据表，减少时间相关字段，考虑分表。

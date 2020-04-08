@@ -1,5 +1,7 @@
 import functools
+import sys
 import time
+import traceback
 
 from common.instance import log
 from common.email_helper import send_error
@@ -62,15 +64,19 @@ def one_more_try(message: str, max=3, important=False):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             logger.info('one more try has in work, the one more try function: {}'.format(func))
+            error = None
             for i in range(max):
                 try:
                     return func(*args, **kwargs)
                 except Exception as e:
-                    logger.info('somethings wrong, detail: {}, retry time: {}'.format(e.args, i))
+                    error = e
+                    logger.info('one more try wrong, detail: {}, retry time: {}'.format(e.args, i))
                     time.sleep(0.1)
                     if important:
                         send_error(e, message)
-            send_error(e, message)
-            raise e
+            logger.info('one more try wrong complete wrong')
+            send_error(error, message)
+            traceback.print_exc(file=sys.stdout)
+            raise error
         return wrapper
     return decorator

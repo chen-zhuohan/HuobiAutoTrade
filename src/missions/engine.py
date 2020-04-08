@@ -5,7 +5,7 @@ from common.time_helper import can_run_at_now
 from common.utils import Logger
 from conditions.interface import get_condition_by_name
 from missions.model import Mission, Missionary
-from schedule.interface import update_missionary, del_missionary, add_missionary
+# from schedule.interface import update_missionary, del_missionary, add_missionary
 from tasks.interface import get_task_by_id
 
 
@@ -79,7 +79,7 @@ class MissionaryEngine:
         self.missionary.run_time = task.run_time        # if not same，follow to task
         self.missionary.save()
         self.log.info('missionary run time update to {}'.format(self.missionary.run_time))
-        update_missionary(self.missionary)
+        # update_missionary(self.missionary)
 
         if can_run_at_now(task.run_time, now=now_missionary_run_time):
             return _do_run()
@@ -109,10 +109,10 @@ class MissionaryEngine:
         self.log.info('finished mission: {}, next mission: {}'.format(finished_mission, mission))
 
         self.log.info('try to del finished mission')
-        del_missionary(finished_mission.id)
+        # del_missionary(finished_mission.id)
         missionary = Missionary.get_or_create_by_mission(mission)
         self.log.info('try to add next mission')
-        add_missionary(mission_id=mission.id, run_time=missionary.run_time)
+        # add_missionary(mission_id=mission.id, run_time=missionary.run_time)
 
     @property
     def next_task_index(self):

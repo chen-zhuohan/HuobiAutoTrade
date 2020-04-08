@@ -3,14 +3,14 @@ MAINTAINER chen_zhuohan <chen_zhuohan@163.com>
 WORKDIR /home
 
 # for greatwall firewall
-RUN echo "http://mirrors.aliyun.com/alpine/latest-stable/main/" > /etc/apk/repositories &&\
-    echo "http://mirrors.aliyun.com/alpine/latest-stable/community/" >> /etc/apk/r
+#RUN echo "http://mirrors.aliyun.com/alpine/latest-stable/main/" > /etc/apk/repositories &&\
+#    echo "http://mirrors.aliyun.com/alpine/latest-stable/community/" >> /etc/apk/r
+#    mkdir -p ~/.pip/ && touch ~/.pip/pip.conf &&\
+#    echo "[global]" >> ~/.pip/pip.conf &&\
+#    echo "index-url = https://pypi.tuna.tsinghua.edu.cn/simple" >> ~/.pip/pip.conf
 
 RUN apk update  &&\
     apk add python3-dev python3 gcc jpeg-dev libffi-dev libffi linux-headers postgresql-dev musl-dev &&\
-    mkdir -p ~/.pip/ && touch ~/.pip/pip.conf &&\
-    echo "[global]" >> ~/.pip/pip.conf &&\
-    echo "index-url = https://pypi.tuna.tsinghua.edu.cn/simple" >> ~/.pip/pip.conf &&\
     pip3 install --upgrade pip &&\
     apk update  &&\
     apk add supervisor &&\
@@ -30,4 +30,3 @@ RUN apk update  &&\
     # 每个 RUN 命令都会被默认执行,&&做连接，\表示换行
 ENV TZ Asia/Shanghai
 EXPOSE 5000
-ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

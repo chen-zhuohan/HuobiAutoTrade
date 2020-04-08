@@ -33,7 +33,7 @@ class TaskViewModel(ModelView):
     }
 
     def validate_form(self, form):
-        if hasattr(form, 'type') and form.type.data is not None:
+        if hasattr(form, 'type') and form.type and form.type.data is not None:
             form.type.data = int(form.type.data)
         return super(TaskViewModel, self).validate_form(form)
 

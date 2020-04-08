@@ -1,6 +1,7 @@
-import uuid
+n = 49
 
-username = 'LCUser_{}'.format(hex(int(uuid.uuid4().hex, 16) // 10**18).upper())
+p = 10**2
+b = (n * p // 1) / p
 
-print(len(username))
-print(username)
+
+print(b)

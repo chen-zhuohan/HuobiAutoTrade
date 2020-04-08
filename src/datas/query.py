@@ -1,8 +1,11 @@
 import requests
 from typing import List
 
+from common.utils import Logger
 from common.utils import one_more_try
 from configs import MARKET_KLINE_URL
+
+log = Logger('query kline')
 
 
 class Kline:
@@ -37,7 +40,9 @@ def get_kline_data(symbol: str, period: str, size: int) -> List[Kline]:
     }, {...}, ...
     ]
     """
+    symbol = symbol.strip()
     params = dict(symbol=symbol, period=period, size=size)
+    log.info('try to get data, params: {}'.format(params))
     response = requests.get(MARKET_KLINE_URL, params=params)
     data = response.json()['data']
     data.sort(key=lambda i: i['id'], reverse=True)
