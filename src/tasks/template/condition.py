@@ -28,7 +28,12 @@ class StopLose(ConditionTask):
         self.msg_args = (buy_price, now_price, diff, last_hour_price, p*100)
         if diff > 0 and p > 0.03:
             # TODO: move to others
-            Conditions.create(name='stop lose', valid=True)
+            condition = Conditions.query.filter(Conditions.name.like('%stop lose%')).first()
+            if condition:
+                condition.valid = True
+                condition.save()
+            else:
+                Conditions.create(name='stop lose', valid=True)
             return True
 
         return False

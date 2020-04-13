@@ -28,9 +28,9 @@ def get_all_spot_balance(type_):
     return 0
 
 
-def handel_precision(n):
+def handel_precision(n, type_):
     """ 获得 usdt，处理精度 """
-    balance = get_all_spot_balance('usdt')
+    balance = get_all_spot_balance(type_)
     n = n / 100 * balance
     p = 10**2
     return (n * p // 1) / p
@@ -41,7 +41,7 @@ def market_buy(amount: int, symbol: str) -> int:
     request_client = get_request_client()
     if NOTTRADE:
         return 0
-    amount = handel_precision(amount)
+    amount = handel_precision(amount, 'usdt')
     huobi_logger.info(f'request_client.create_order({symbol}, {AccountType.SPOT}, {OrderType.BUY_MARKET}, amount={amount}, price={None})')
     order_id = request_client.create_order(symbol, AccountType.SPOT, OrderType.BUY_MARKET, amount=amount, price=None)
     return int(order_id)
@@ -52,7 +52,7 @@ def market_sell(amount: int, symbol: str) -> int:
     request_client = get_request_client()
     if NOTTRADE:
         return 0
-    amount = handel_precision(amount)
+    amount = handel_precision(amount, 'theta')
     huobi_logger.info(f'request_client.create_order({symbol}, {AccountType.SPOT}, {OrderType.SELL_MARKET}, amount={amount}, price={None})')
     order_id = request_client.create_order(symbol, AccountType.SPOT, OrderType.SELL_MARKET, amount=amount, price=None)
     return int(order_id)

@@ -1,5 +1,6 @@
 from common.utils import Logger
 
+
 class ResultType:
     NORMAL = 1
     UNVALID = 2

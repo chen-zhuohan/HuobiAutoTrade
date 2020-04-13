@@ -21,6 +21,7 @@ for name, obj in inspect.getmembers(task_template_set):
 
 class TaskEngine:
     logger = Logger('Task engine')
+
     def __init__(self, task_id=None):
         if task_id is None:         # for test
             return
@@ -68,14 +69,21 @@ class TaskEngine:
         is_pass = self.task.try_pass(**self.kwargs)
         self.logger.info('task pass completed, result: {}'.format(is_pass))
 
-        result = Result.create_by_task_engine(self, is_pass)
-        self.logger.info('create result by task engine successfully, result: {}'.format(result))
+        result = self.create_result_log(is_pass)
 
-        result_log = ResultLog.save_from_task_engine(self)
-        self.logger.info('create result log by task engine successfully, result_log id: {}'.format(result_log.id))
-        self.logger.info('task type: {}'.format(type(self.task)))
         if is_pass and issubclass(self.task.__class__, TradeTask):        # 记录交易结果
             order_id = self.task.order_id
             record_by_order_id.delay(order_id, self.mission_id, self.mission_name, self.missionary_id)
             self.logger.info('task is type of trade, save trade record has in async.order id: {}'.format(order_id))
+            self.logger.info('task is type of trade, save trade record has in async.order id: {}'.format(order_id))
+        return result
+
+    def create_result_log(self, is_pass):
+        result = Result.create_by_task_engine(self, is_pass)
+        self.logger.info('create result by task engine successfully, result: {}'.format(result))
+        if self.task.need_record:
+            result_log = ResultLog.save_from_task_engine(self)
+            self.logger.info('create result log by task engine successfully, result_log id: {}'.format(result_log.id))
+            self.logger.info('task type: {}'.format(type(self.task)))
+
         return result

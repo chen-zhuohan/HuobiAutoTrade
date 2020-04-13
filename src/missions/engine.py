@@ -1,11 +1,9 @@
 from common.email_helper import send_missionary_pass
-from common.instance import redis, db
-from common.model_help import save_many_models
+from common.instance import redis
 from common.time_helper import can_run_at_now
 from common.utils import Logger
 from conditions.interface import get_condition_by_name
 from missions.model import Mission, Missionary
-# from schedule.interface import update_missionary, del_missionary, add_missionary
 from tasks.interface import get_task_by_id
 
 
@@ -102,21 +100,21 @@ class MissionaryEngine:
         self.log.info('after all pass, ready to start next mission')
         finished_mission = Mission.query.filter_by(id=self.mission_id).first()
         finished_mission.is_valid = False
+        finished_mission.save()
+        # mission = Mission.query.filter_by(id=self.next_run_mission_id).first()
+        # mission.is_valid = True
+        # save_many_models(finished_mission, mission)
+        # self.log.info('finished mission: {}, next mission: {}'.format(finished_mission, mission))
 
-        mission = Mission.query.filter_by(id=self.next_run_mission_id).first()
-        mission.is_valid = True
-        save_many_models(finished_mission, mission)
-        self.log.info('finished mission: {}, next mission: {}'.format(finished_mission, mission))
-
-        self.log.info('try to del finished mission')
+        # self.log.info('try to del finished mission')
         # del_missionary(finished_mission.id)
-        missionary = Missionary.get_or_create_by_mission(mission)
-        self.log.info('try to add next mission')
+        # missionary = Missionary.get_or_create_by_mission(mission)
+        # self.log.info('try to add next mission')
         # add_missionary(mission_id=mission.id, run_time=missionary.run_time)
-
-    @property
-    def next_task_index(self):
-        redis.set()
+    #
+    # @property
+    # def next_task_index(self):
+    #     redis.set()
     # def show_info(self):
     #     result = []
     #     for task_id in self.task_id_line:

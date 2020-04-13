@@ -11,6 +11,7 @@ class TaskTemplateBase:
 
     def __init__(self, *args, **kwargs):
         self.msg_args = tuple()
+        self.need_record = True
 
     def __str__(self):
         return self.msg
