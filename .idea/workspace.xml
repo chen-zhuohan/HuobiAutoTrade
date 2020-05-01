@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5a0b6d1-778d-4145-9e48-7a1e70989efc" name="Default Changelist" comment="" />
+    <list default="true" id="c5a0b6d1-778d-4145-9e48-7a1e70989efc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conditions/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/conditions/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/missions/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/missions/engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tasks/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tasks/engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tasks/template/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tasks/template/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tasks/template/mix.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tasks/template/mix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trade/huobi_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/trade/huobi_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trade/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/trade/model.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +86,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.history_order_demo">
+  <component name="RunManager" selected="Python.test">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Watch-and-Auto-Trade-virtual-currency" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,8 +199,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.history_order_demo" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.history_order_demo" />
         <item itemvalue="Python.engine" />
         <item itemvalue="Python.__init__" />
         <item itemvalue="Python.test (1)" />
@@ -261,7 +271,11 @@
       <workItem from="1586668533159" duration="1423000" />
       <workItem from="1586695896969" duration="17000" />
       <workItem from="1586702531847" duration="160000" />
-      <workItem from="1586739810825" duration="3525000" />
+      <workItem from="1586739810825" duration="8583000" />
+      <workItem from="1587085950332" duration="50000" />
+      <workItem from="1588003194593" duration="1926000" />
+      <workItem from="1588300826060" duration="1177000" />
+      <workItem from="1588330843407" duration="2936000" />
     </task>
     <servers />
   </component>
@@ -286,7 +300,7 @@
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$celery_redbeat_demo.coverage" NAME="celery_redbeat_demo Coverage Results" MODIFIED="1582432688402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$jwt_demo.coverage" NAME="jwt_demo Coverage Results" MODIFIED="1583458489794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test_helper.coverage" NAME="test_helper Coverage Results" MODIFIED="1582769834376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade/common" />
-    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test.coverage" NAME="test Coverage Results" MODIFIED="1586226586370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$test.coverage" NAME="test Coverage Results" MODIFIED="1588003568778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$helper.coverage" NAME="helper Coverage Results" MODIFIED="1582816137951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/tasks" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$interface.coverage" NAME="interface Coverage Results" MODIFIED="1583655599791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/tasks" />
     <SUITE FILE_PATH="coverage/Watch_and_Auto_Trade_virtual_currency$main.coverage" NAME="main Coverage Results" MODIFIED="1582432412381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_trade" />

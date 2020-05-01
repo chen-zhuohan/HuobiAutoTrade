@@ -15,6 +15,7 @@ task_template_set = importlib.import_module('tasks.template.__init__')
 task_template_dict = dict()
 
 for name, obj in inspect.getmembers(task_template_set):
+    print(name, obj)
     if inspect.isclass(obj) and issubclass(obj, TaskTemplateBase):
         task_template_dict[name] = obj
 

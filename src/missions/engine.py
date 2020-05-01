@@ -31,7 +31,7 @@ class MissionaryEngine:
     def try_pass(self):
         self.log.info('try to pass')
         if self.can_run_before_each_task():
-            if not self.try_pass_each_task():
+            if not self.find_next_task_and_run_each():
                 return False
         else:
             self.log.info('cant run any task due to can_run_before_each_task')
@@ -39,58 +39,41 @@ class MissionaryEngine:
 
         if self.can_run_before_target():
             if self.try_pass_target():
+                self.missionary.finish()
+                self.mission_finish()
                 return True
         else:
             self.log.info('cant run target due to can_run_before_target')
             return False
 
-    def try_pass_each_task(self):
+    def find_next_task_and_run_each(self):
         for index, task_id in enumerate(self.task_id_line):
             if index < self.missionary.next_task_index:
                 continue
 
-            task = get_task_by_id(task_id)
+            task = self.get_task_by_id(task_id, index)
             self.log.info('run from index: {}, task_id {}, get task: {} '.format(index, task_id, task))
-            if not self.pass_task(index, task):
+            if not self.run_task(index, task):
                 return False
+            self.missionary_follow_task(self.missionary, task)
 
         self.log.info('pass all task successfully')
         return True
 
-    def pass_task(self, index, task) -> bool:
-        def _do_run():
-            task.get_info_from_mission(index, self)
+    def run_task(self, index, task) -> bool:
+        if self.is_task_can_run_in_this_missionary(task, self.missionary):
             can_run_result = task.can_run()
+            self.log.info(f'try to pass ')
             if can_run_result and task.try_pass():
                 self.log.info('pass one task successfully')
                 self.missionary.add_task_index(save=False)
                 return True
-            else:
-                self.log.info('task fail at index: {}, can_run: {}'.format(index, can_run_result))
-                return False
-
-        if self.missionary.run_time == task.run_time:
-            self.log.info('missionary run time is same as task run time')
-            return _do_run()
-
-        now_missionary_run_time = self.missionary.run_time
-        self.missionary.run_time = task.run_time        # if not same，follow to task
-        self.missionary.save()
-        self.log.info('missionary run time update to {}'.format(self.missionary.run_time))
-        # update_missionary(self.missionary)
-
-        if can_run_at_now(task.run_time, now=now_missionary_run_time):
-            return _do_run()
-        else:
-            self.log.info('task({}) cant run at {}'.format(task.run_time, now_missionary_run_time))
-            return False
-
+        return False
+    
     def try_pass_target(self):
         self.target.get_info_from_mission(mission_engine=self)
         if self.target.can_run() and self.target.try_pass():
             self.log.info('pass target successfully')
-            self.missionary.finish()
-            self.mission_finish()
             self.log.info('update missionary model successfully')
             send_missionary_pass(self.name)
             return True
@@ -98,7 +81,7 @@ class MissionaryEngine:
 
     def mission_finish(self):
         self.log.info('after all pass, ready to start next mission')
-        finished_mission = Mission.query.filter_by(id=self.mission_id).first()
+        finished_mission = Mission.query.filter(Mission.id == self.mission_id).first()
         finished_mission.is_valid = False
         finished_mission.save()
         # mission = Mission.query.filter_by(id=self.next_run_mission_id).first()
@@ -111,6 +94,34 @@ class MissionaryEngine:
         # missionary = Missionary.get_or_create_by_mission(mission)
         # self.log.info('try to add next mission')
         # add_missionary(mission_id=mission.id, run_time=missionary.run_time)
+
+    @classmethod
+    def is_task_can_run_in_this_missionary(cls, task, missionary):
+        if missionary.run_time == task.run_time:
+            cls.log.info('missionary run time is same as task run time')
+            return True
+
+        if can_run_at_now(task.run_time, now=missionary.run_time):
+            cls.log.info(f'missionary run time not same as task, but {task.run_time} can run at {missionary.run_time}')
+            return True
+
+        cls.log.info('task({}) cant run at {}'.format(task.run_time, missionary.run_time))
+        return False
+
+    @classmethod
+    def missionary_follow_task(cls, missionary, task):
+        if missionary.run_time != task.run_time:
+            missionary.run_time = task.run_time  # if not same，follow to task
+            missionary.save()
+            cls.log.info('missionary run time update to {}'.format(missionary.run_time))
+            return
+        cls.log.info(f'missionary run time is same as task {task}')
+
+    @classmethod
+    def get_task_by_id(cls, task_id, index):
+        task = get_task_by_id(task_id)
+        task.get_info_from_mission(index, cls)
+        return task
     #
     # @property
     # def next_task_index(self):

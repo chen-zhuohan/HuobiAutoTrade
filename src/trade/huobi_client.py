@@ -22,6 +22,7 @@ def get_all_spot_balance(type_):
     huobi_logger.info(f'request_client.get_account_balance_by_account_type({AccountType.SPOT})')
     account: Account = request_client.get_account_balance_by_account_type(AccountType.SPOT)
     for balance in account.balances:
+        huobi_logger.info(f'currency: {balance.currency}, balance: {balance.balance}')
         if type_ == balance.currency and balance.balance > 0.000000001:
             return int(balance.balance)
 
