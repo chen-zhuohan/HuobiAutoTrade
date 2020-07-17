@@ -1,4 +1,4 @@
-# designed by CZH powered by Hu Jianrong
+# designed by CZH powered by [Hu Jianrong](https://github.com/capacitanceHu)
 
 ## celery-beat
 
