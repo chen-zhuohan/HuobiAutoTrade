@@ -1,6 +1,6 @@
 import logging
+
 import pytz
-import os
 
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s][%(levelname)s] - %(message)s')
 
@@ -14,7 +14,7 @@ TIMEZONE = pytz.timezone(timezone)
 SECRET_KEY = 'os.urandom(24)SQLALCHEMY_POOL_TIMEOUT'
 
 # db:
-BASE_DATABASE_URI = 'postgresql://czh:17081210@118.25.56.109:5432'
+BASE_DATABASE_URI = 'postgresql://'
 SQLALCHEMY_DATABASE_URI = '{}/{}'.format(BASE_DATABASE_URI, 'test-huobi' if TESTING else 'huobi')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_POOL_RECYCLE = 7200
@@ -37,10 +37,11 @@ class CeleryConfig:
     result_expires = 60
     task_time_limit = 30
 
+
 # huobi:
-AccessKey = '86f2d22d-1ac828d6-c44f1ea3-uymylwhfeg'
-SecretKey = '2738f6d8-44c91ee3-7d1e1e62-0fb10'
-HUOBI_URL = 'https://api.huobi.de.com'    # 不用翻墙
+AccessKey = ''
+SecretKey = ''
+HUOBI_URL = 'https://api.huobi.de.com'  # 不用翻墙
 # HUOBI_URL = 'https://api.huobi.pro'
 # HUOBI_URL = 'https://api-aws.huobi.pro'
 MARKET_KLINE_URL = HUOBI_URL + '/market/history/kline'
@@ -58,6 +59,6 @@ USERS = {
 }
 LOGIN_EXPIRES_IN = 2592000
 MAIL_HOST = "smtp.qq.com"  # 设置服务器
-MAIL_USER = "1185671574@qq.com"  # 用户名
-MAIL_PASSWORD = "fjrhahmxiavgidei"  # 口令
+MAIL_USER = ""  # 用户名
+MAIL_PASSWORD = ""  # 口令
 MAIL_PORT = 587

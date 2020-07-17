@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a0b6d1-778d-4145-9e48-7a1e70989efc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/configs.py_example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conditions/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/conditions/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/missions/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/missions/engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tasks/engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/template/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tasks/template/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/template/mix.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tasks/template/mix.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trade/huobi_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/trade/huobi_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trade/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/trade/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +49,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ugc-jiuzhang" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,15 +59,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\src" />
+      <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\demo" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\src\trade" />
       <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\src\tasks" />
       <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\src\tasks\models" />
       <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\demo\templates" />
       <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\demo\static" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Project\chenzhuohan\Watch-and-Auto-Trade-virtual-currency\demo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -275,7 +272,13 @@
       <workItem from="1587085950332" duration="50000" />
       <workItem from="1588003194593" duration="1926000" />
       <workItem from="1588300826060" duration="1177000" />
-      <workItem from="1588330843407" duration="2936000" />
+      <workItem from="1588330843407" duration="3967000" />
+      <workItem from="1588564326512" duration="9000" />
+      <workItem from="1589206133481" duration="624000" />
+      <workItem from="1589682722429" duration="352000" />
+      <workItem from="1592562246152" duration="485000" />
+      <workItem from="1592786982384" duration="28000" />
+      <workItem from="1594957583297" duration="276000" />
     </task>
     <servers />
   </component>

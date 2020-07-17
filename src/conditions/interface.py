@@ -22,7 +22,7 @@ def get_condition_by_name(name: str) -> callable:
         return always_false
     else:
         query_str = f'%{name}%'
-        condition = Conditions.query.filter_by(Conditions.name.like(query_str)).first()
+        condition = Conditions.query.filter(Conditions.name.like(query_str)).first()
         if condition is None:
             return always_false
         else:
