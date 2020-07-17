@@ -120,3 +120,4 @@ dmypy.json
 # huobi
 huobi/
 src/configs.py
+.idea

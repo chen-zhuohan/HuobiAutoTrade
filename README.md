@@ -1,3 +1,5 @@
+# designed by CZH powered by Hu Jianrong
+
 ## celery-beat
 
 程序启动，从pgsql中获得有效的mission列表，其中时间crontab为json格式，任务实体从MissionInterface中拿。
@@ -96,4 +98,3 @@ result记录着一次task运行完的结果。字段包括missionary_id，task_n
 5. 增加测试用例
 6. mission和missionary的概念的梳理，减少查表次数
 7. 定制化管理界面，增加提示信息，修改CSS样式
-8. 优化数据表，减少时间相关字段，考虑分表。
